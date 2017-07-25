@@ -1,0 +1,36 @@
+{% extends "_base.html" %}
+
+{% block content %}
+    <div id="divContent" class="">
+        <h1 class="text-center">All Members</h1>
+        <p>
+        </p>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th> First Name</th>
+                <th> Last Name</th>
+                <th> Country</th>
+                <th> Phone Number</th>
+                <th> E-mail</th>
+                <th> Membership confirmed</th>
+                <th> View Profile</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for profile in profiles %}
+                <tr>
+                    <td> {{ profile.user.firstName }}</td>
+                    <td> {{ profile.user.lastName }}</td>
+                    <td> {{ profile.user.country }}</td>
+                    <td> {{ profile.phone }}</td>
+                    <td> {{ profile.user.email }}</td>
+                    <td> {{ profile.validity }}</td>
+                    <td><a href="{{ url_for('profile.profile_view', profile_id=profile.id) }}"><span
+                            class="glyphicon glyphicon-eye-open"></span></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

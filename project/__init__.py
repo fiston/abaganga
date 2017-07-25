@@ -18,6 +18,7 @@ from flask_mail import Mail
 #### config ####
 ################
 
+
 app = Flask(__name__)
 
 # app.config.from_object(os.environ['APP_SETTINGS'])
@@ -42,11 +43,13 @@ from project.main.views import main_blueprint
 from project.user.views import user_blueprint
 from project.profile.views import profile_blueprint
 from project.payment.views import payment_blueprint
+from project.meeting.views import registration_blueprint
 
 app.register_blueprint(main_blueprint)
 app.register_blueprint(user_blueprint)
 app.register_blueprint(profile_blueprint)
 app.register_blueprint(payment_blueprint)
+app.register_blueprint(registration_blueprint)
 
 ####################
 #### flask-login ####

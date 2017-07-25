@@ -1,0 +1,65 @@
+{% extends "_base.html" %}
+
+{% block content %}
+    <div id="divContent" class="col-md-6 col-md-offset-3">
+        <h1>Complete your Registration</h1>
+        <br>
+        <form class="form-signin" role="form" method="post" action="">
+
+            {{ form.csrf_token }}
+         <div class="form-group">
+                <label for="formGroupExampleInput">{{ form.title.label }}</label>{{ form.title(placeholder="Title", class="form-control") }}
+            </div>
+            <span class="error">
+      {% if form.title.errors %}
+          {% for error in form.title.errors %}
+              {{ error }}
+          {% endfor %}
+      {% endif %}
+    </span>
+            <div class="form-group">
+                <label for="formGroupExampleInput">{{ form.firstName.label }}</label>
+                {{ form.firstName(placeholder="firstName") }}
+            </div>
+            <span class="error">
+      {% if form.firstName.errors %}
+          {% for error in form.firstName.errors %}
+              {{ error }}
+          {% endfor %}
+      {% endif %}
+    </span>
+            <div class="form-group">
+                <label for="formGroupExampleInput">{{ form.lastName.label }}</label>{{ form.lastName(placeholder="lastName") }}
+            </div>
+            <span class="error">
+      {% if form.lastName.errors %}
+          {% for error in form.lastName.errors %}
+              {{ error }}
+          {% endfor %}
+      {% endif %}
+    </span>
+            <div class="form-group">
+                <label for="formGroupExampleInput">{{ form.telephone.label }}</label>{{ form.telephone(placeholder="telephone") }}
+            </div>
+            <span class="error">
+      {% if form.telephone.errors %}
+          {% for error in form.telephone.errors %}
+              {{ error }}
+          {% endfor %}
+      {% endif %}
+    </span>
+         <div class="form-group">
+                <label for="formGroupExampleInput">{{ form.occupation.label }}</label>{{ form.occupation(placeholder="occupation") }}
+            </div>
+            <span class="error">
+      {% if form.occupation.errors %}
+          {% for error in form.occupation.errors %}
+              {{ error }}
+          {% endfor %}
+      {% endif %}
+    </span>
+            <button class="btn btn-success" type="submit">Register!</button>
+
+        </form>
+    </div>
+{% endblock %}
