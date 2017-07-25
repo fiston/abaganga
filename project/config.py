@@ -16,30 +16,30 @@ class BaseConfig(object):
     SECURITY_TRACKABLE = True
 
     # mail settings
-    # MAIL_SERVER = 'smtp.googlemail.com'
-    # MAIL_PORT = 465
-    # MAIL_USE_TLS = False
-    # MAIL_USE_SSL = True
-
-    # mail settings
-    MAIL_SERVER = 'cloud505.unlimitedwebhosting.co.uk'
+    MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 465
     MAIL_USE_TLS = False
     MAIL_USE_SSL = True
 
+    # mail settings
+    # MAIL_SERVER = 'cloud505.unlimitedwebhosting.co.uk'
+    # MAIL_PORT = 465
+    # MAIL_USE_TLS = False
+    # MAIL_USE_SSL = True
+
     # # gmail authentication
-    # MAIL_USERNAME = 'ngezahayo@gmail.com'
-    # MAIL_PASSWORD = 'NyiJeanne@09/19'
+    MAIL_USERNAME = 'ngezahayo@gmail.com'
+    MAIL_PASSWORD = 'NyiJeanne@09/19'
     #
     # # mail accounts
-    # MAIL_DEFAULT_SENDER = 'ngezahayo@gmail.com'
+    MAIL_DEFAULT_SENDER = 'ngezahayo@gmail.com'
 
     # personal mail authentication
-    MAIL_USERNAME = 'do-not-reply@rwandapaeds.rw'
-    MAIL_PASSWORD = 'Admin@123@'
+    # MAIL_USERNAME = 'do-not-reply@rwandapaeds.rw'
+    # MAIL_PASSWORD = 'Admin@123@'
 
     # mail accounts
-    MAIL_DEFAULT_SENDER = 'do-not-reply@rwandapaeds.rw'
+    # MAIL_DEFAULT_SENDER = 'do-not-reply@rwandapaeds.rw'
 
 
 class DevelopmentConfig(BaseConfig):
