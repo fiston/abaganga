@@ -30,15 +30,15 @@ class BaseConfig(object):
     # # gmail authentication
     MAIL_USERNAME = 'ngezahayo@gmail.com'
     MAIL_PASSWORD = 'NyiJeanne@09/19'
-    #
-    # # mail accounts
+
+    # mail accounts
     MAIL_DEFAULT_SENDER = 'ngezahayo@gmail.com'
 
     # personal mail authentication
     # MAIL_USERNAME = 'do-not-reply@rwandapaeds.rw'
     # MAIL_PASSWORD = 'Admin@123@'
-
-    # mail accounts
+    #
+    # # mail accounts
     # MAIL_DEFAULT_SENDER = 'do-not-reply@rwandapaeds.rw'
 
 
@@ -46,8 +46,8 @@ class DevelopmentConfig(BaseConfig):
     """Development configuration."""
     DEBUG = True
     WTF_CSRF_ENABLED = False
-    # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'dev.sqlite')
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:NiOrla17@localhost/membership_system'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'dev.sqlite')
+    # SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:NiOrla17@localhost/membership_system'
     DEBUG_TB_ENABLED = True
 
 
