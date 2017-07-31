@@ -21,36 +21,36 @@ def load_titles():
 
 
 class LoginForm(Form):
-    email = TextField('email', validators=[DataRequired(), Email()])
-    password = PasswordField('password', validators=[DataRequired()])
+    email = TextField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
 
 
 class RegisterForm(Form):
     email = TextField(
-        'email',
+        'Email',
         validators=[DataRequired(), Email(message=None), Length(min=6, max=40)])
     firstName = TextField(
-        'firstName',
+        'FirstName',
         validators=[DataRequired(), Length(min=2, max=40)])
     lastName = TextField(
-        'lastName',
+        'LastName',
         validators=[Length(min=0, max=40)])
     workPlace = TextField(
-        'workPlace',
+        'Work Place',
         validators=[Length(min=3, max=40)])
-    gender = SelectField('gender', validators=[DataRequired("Please select gender")],
+    gender = SelectField('Gender', validators=[DataRequired("Please select gender")],
                          choices=[('female', 'Female'), ('male', 'Male')])
     dateOfBirth = DateField('dateOfBirth', validators=[DataRequired("Please select Date Of Birth")])
     category = TextField(
-        'category',
+        'Category',
         validators=[DataRequired(), Length(min=6, max=40)])
-    title = SelectField('title', validators=[DataRequired("Please select a Title")],
+    title = SelectField('Title', validators=[DataRequired("Please select a Title")],
                         choices=[('MD', 'Medical Doctor (MD)'), ('Mr', 'Mr'), ('Mrs', 'Mrs'), ('Ms', 'Ms'),
                                  ('Phd', 'Phd.')])
     country = SelectField('country', choices=load_countries())
 
     password = PasswordField(
-        'password',
+        'Password',
         validators=[DataRequired(), Length(min=6, max=25)]
     )
     confirm = PasswordField(
@@ -74,7 +74,7 @@ class RegisterForm(Form):
 
 class ChangePasswordForm(Form):
     password = PasswordField(
-        'password',
+        'Password',
         validators=[DataRequired(), Length(min=6, max=25)]
     )
     confirm = PasswordField(

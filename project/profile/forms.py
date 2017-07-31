@@ -7,6 +7,6 @@ from wtforms.validators import DataRequired, Length
 
 
 class ProfileForm(Form):
-    bio = StringField('bio', validators=[DataRequired(), Length(min=6, max=25)])
-    profilePic = StringField('profilePic', validators=[DataRequired(), Length(min=6, max=25)])
-    phone = StringField('phone', validators=[DataRequired(), Length(min=2, max=25)])
+    bio = StringField('Bio', validators=[DataRequired(), Length(min=6, max=25)])
+    profilePic = StringField('Profile Pic', validators=[DataRequired(), Length(min=6, max=25)])
+    phone = StringField('Phone', validators=[DataRequired(), Length(min=2, max=25)])
