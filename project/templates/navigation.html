@@ -16,12 +16,15 @@
                 <a class="nav-link" href="{{ url_for('main.home') }}">Dashboard</a>
             </li>
             <li class="nav-item px-1">
+                <a class="nav-link" href="{{ url_for('registration.registration_add') }}">Register for meeting</a>
+            </li>
+            <li class="nav-item px-1">
                 <a class="nav-link" href="#"></a>
             </li>
             {% if current_user.admin %}
-            <li class="nav-item px-1">
-                <a class="nav-link" href="{{ url_for('profile.list_all') }}">List All Members</a>
-            </li>
+                <li class="nav-item px-1">
+                    <a class="nav-link" href="{{ url_for('profile.list_all') }}">List All Members</a>
+                </li>
             {% endif %}
         </ul>
         <ul class="nav navbar-nav ml-auto navbar-right">
