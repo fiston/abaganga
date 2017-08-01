@@ -46,8 +46,8 @@ class DevelopmentConfig(BaseConfig):
     """Development configuration."""
     DEBUG = True
     WTF_CSRF_ENABLED = False
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'dev.sqlite')
-    # SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:NiOrla17@localhost/membership_system'
+    # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'dev.sqlite')
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:"!kouou@123"@localhost/membership_system'
     DEBUG_TB_ENABLED = True
 
 
