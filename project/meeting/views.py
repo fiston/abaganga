@@ -4,7 +4,7 @@
 #################
 #### imports ####
 #################
-
+import requests
 from flask import render_template, Blueprint, request, flash, redirect, url_for
 from flask.ext.login import login_required, current_user
 
@@ -12,6 +12,9 @@ from project import db
 from project.decorators import check_confirmed, check_is_admin
 from project.email import send_email
 from project.meeting.models import Registration
+from project.payment import client
+from project.payment.forms import PaymentForm
+from project.payment.models import Payment
 from project.profile.models import Profile
 from project.user.models import User
 from .forms import RegistrationForm
@@ -27,9 +30,28 @@ registration_blueprint = Blueprint('registration', __name__, )
 #### routes ####
 ################
 
+# @registration_blueprint.route('/registrationAdd', methods=['GET', 'POST'])
+# def registration_add():
+#     form = RegistrationForm(request.form)
+#     if form.validate_on_submit():
+#         registration = Registration(
+#
+#             title=form.title.data,
+#             firstName=form.firstName.data,
+#             lastName=form.lastName.data,
+#             telephone=form.telephone.data,
+#             occupation=form.occupation.data,
+#             validity=False,
+#         )
+#         db.session.add(registration)
+#         db.session.commit()
+#         flash('Your registration has been saved.', 'success')
+#         return redirect(url_for("registration.display"))
+#     elif form.is_submitted():
+#         flash(form.errors, 'danger')
+#     return render_template('registration/register.html', form=form)
+
 @registration_blueprint.route('/registrationAdd', methods=['GET', 'POST'])
-# @login_required
-# @check_confirmed
 def registration_add():
     form = RegistrationForm(request.form)
     if form.validate_on_submit():
@@ -38,14 +60,27 @@ def registration_add():
             title=form.title.data,
             firstName=form.firstName.data,
             lastName=form.lastName.data,
+            email=form.email.data,
             telephone=form.telephone.data,
-            occupation=form.occupation.data,
+            occupation=form.rmdc_number.data,
             validity=False,
         )
-        db.session.add(registration)
-        db.session.commit()
-        flash('Your registration has been saved.', 'success')
-        return redirect(url_for("registration.display"))
+
+        try:
+            # client.make_mobile_payment('16050', registration.telephone,
+            #                            registration.firstName + " " + registration.lastName)
+            names = registration.title + " " + registration.lastName
+            html = render_template('registration/confirmed.html', names=names)
+            subject = "Rwanda Paediatric Association Conference Registration"
+            send_email(registration.email, subject, html)
+            flash('Your registration has been saved, and payment initiated', 'success')
+            db.session.add(registration)
+            db.session.commit()
+            return redirect(url_for("registration.display"))
+        except requests.exceptions.RequestException as e:
+            print e
+            flash('Your registration  encountered an error, please tr again later', 'danger')
+
     elif form.is_submitted():
         flash(form.errors, 'danger')
     return render_template('registration/register.html', form=form)
@@ -60,7 +95,7 @@ def registration_edit(registration_id):
         registration.firstName = form.firsName.data,
         registration.lastName = form.lastName.data,
         registration.telephone = form.telephone.data,
-        registration.occupation = form.occupation.data
+        registration.occupation = form.rmdc_number.data
         db.session.commit()
         flash('Your registration has been saved.', 'success')
         return redirect(url_for("registration.display"))

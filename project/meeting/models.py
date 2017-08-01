@@ -15,17 +15,18 @@ class Registration(db.Model):
     title = db.Column(db.String(255), nullable=False)
     firstName = db.Column(db.String(255), nullable=False)
     lastName = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(255), nullable=True)
     telephone = db.Column(db.String(255), nullable=False)
-    occupation = db.Column(db.String(255), nullable=False)
+    rmdc_number = db.Column(db.String(255), nullable=True)
     validity = db.Column(db.Boolean, nullable=True, default=False)
 
-
-    def __init__(self, title, firstName, lastName, telephone, occupation, validity):
+    def __init__(self, title, firstName, lastName, email, telephone, occupation, validity):
         self.title = title
         self.firstName = firstName
         self.lastName = lastName
+        self.email = email
         self.telephone = telephone
-        self.occupation = occupation
+        self.rmdc_number = occupation
         self.validity = validity
 
     def __repr__(self):

@@ -15,7 +15,7 @@ from project.decorators import check_confirmed, check_is_admin
 #### config ####
 ################
 from project.payment import client
-from project.payment.forms import CardPaymentForm
+from project.payment.forms import PaymentForm
 from project.payment.models import Payment
 
 payment_blueprint = Blueprint('payment', __name__, )
@@ -29,7 +29,7 @@ payment_blueprint = Blueprint('payment', __name__, )
 @login_required
 @check_confirmed
 def payment_add():
-    form = CardPaymentForm(request.form)
+    form = PaymentForm(request.form)
     if form.validate_on_submit():
         payment = Payment(
             names=form.names.data,

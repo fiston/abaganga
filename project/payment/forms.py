@@ -6,7 +6,7 @@ from wtforms import StringField, FloatField, SelectField, IntegerField
 from wtforms.validators import DataRequired, Length
 
 
-class CardPaymentForm(Form):
+class PaymentForm(Form):
     email = StringField('Email', validators=[DataRequired(), Length(min=6, max=25)])
     names = StringField('Names', validators=[DataRequired(), Length(min=3, max=45)])
     # cardNumber = StringField('Card Number', validators=[DataRequired(), Length(min=6, max=25)], default="None")

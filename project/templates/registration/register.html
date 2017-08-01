@@ -7,10 +7,10 @@
         <form class="form-signin" role="form" method="post" action="">
 
             {{ form.csrf_token }}
-         <div class="form-group">
+            <div class="form-group">
                 <label for="formGroupExampleInput">{{ form.title.label }}</label>{{ form.title(placeholder="Title", class="form-control") }}
             </div>
-            <span class="error">
+            <span class="text-danger bg-danger">
       {% if form.title.errors %}
           {% for error in form.title.errors %}
               {{ error }}
@@ -21,7 +21,7 @@
                 <label for="formGroupExampleInput">{{ form.firstName.label }}</label>
                 {{ form.firstName(placeholder="firstName") }}
             </div>
-            <span class="error">
+            <span class="text-danger bg-danger">
       {% if form.firstName.errors %}
           {% for error in form.firstName.errors %}
               {{ error }}
@@ -31,7 +31,7 @@
             <div class="form-group">
                 <label for="formGroupExampleInput">{{ form.lastName.label }}</label>{{ form.lastName(placeholder="lastName") }}
             </div>
-            <span class="error">
+            <span class="text-danger bg-danger">
       {% if form.lastName.errors %}
           {% for error in form.lastName.errors %}
               {{ error }}
@@ -41,19 +41,30 @@
             <div class="form-group">
                 <label for="formGroupExampleInput">{{ form.telephone.label }}</label>{{ form.telephone(placeholder="telephone") }}
             </div>
-            <span class="error">
+            <span class="text-danger bg-danger">
       {% if form.telephone.errors %}
           {% for error in form.telephone.errors %}
               {{ error }}
           {% endfor %}
       {% endif %}
     </span>
-         <div class="form-group">
-                <label for="formGroupExampleInput">{{ form.occupation.label }}</label>{{ form.occupation(placeholder="occupation") }}
+            <div class="form-group">
+                <label for="formGroupExampleInput">{{ form.email.label }}</label>
+                {{ form.email(placeholder="email") }}
             </div>
-            <span class="error">
-      {% if form.occupation.errors %}
-          {% for error in form.occupation.errors %}
+            {% if form.firstName.errors %}
+                <span class="alert alert-danger">
+                  {% for error in form.firstName.errors %}
+                      {{ error }}
+                  {% endfor %}
+                  </span>
+            {% endif %}
+            <div class="form-group">
+                <label for="formGroupExampleInput">{{ form.rmdc_number.label }}</label>{{ form.rmdc_number(placeholder="rmdc_number") }}
+            </div>
+            <span class="text-danger bg-danger">
+      {% if form.rmdc_number.errors %}
+          {% for error in form.rmdc_number.errors %}
               {{ error }}
           {% endfor %}
       {% endif %}
@@ -61,5 +72,6 @@
             <button class="btn btn-success" type="submit">Register!</button>
 
         </form>
+
     </div>
 {% endblock %}
